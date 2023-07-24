@@ -9,4 +9,19 @@ step x = if even x then down else up
 -- Collatz x computes how many steps it takes for the Collatz sequence to reach 1 when starting from x
 Collatz :: Integer - > Integer
 Collatz 1 = 0
-Collatz x = 
+Collatz x = 1 + Collatz (step x)
+
+-- longest finds the number with the longest Collatz sequence for initial values between 0 and upperBound
+longest :: Integer -> Integer
+longest upperBound = longest' 0 0 upperBound
+
+-- helper function for longest
+longest' :: Integer -> Integer -> Integer -> Integer
+-- end of recursion, return longest length found
+longest' number _ 0 = number
+-- recursion step: check if n has a longer Collatz sequence´than the current known longest
+longest' number maxlength n =
+    if len > maxlength
+    then longest' n len (n-1)
+    else longest' number maxlength (n-1)
+    where len = collatz n
