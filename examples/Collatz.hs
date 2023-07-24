@@ -7,9 +7,9 @@ step x = if even x then down else up
           up = 3 * x + 1
 
 -- Collatz x computes how many steps it takes for the Collatz sequence to reach 1 when starting from x
-Collatz :: Integer - > Integer
-Collatz 1 = 0
-Collatz x = 1 + Collatz (step x)
+collatz :: Integer -> Integer
+collatz 1 = 0
+collatz x = 1 + collatz (step x)
 
 -- longest finds the number with the longest Collatz sequence for initial values between 0 and upperBound
 longest :: Integer -> Integer
