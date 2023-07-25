@@ -142,5 +142,5 @@ power n k = n * power n (k - 1)
 
 ilog3 :: Integer -> Integer
 ilog3 n
-    | n >= 3 = 1 + ilog3 (n `div` 3)
-    | otherwise = 0 -- Recursive case: Divide n by 3 until it becomes less than 3
+  | n < 1     = 0
+  | otherwise = 1 + ilog3 (n `div` 3)
